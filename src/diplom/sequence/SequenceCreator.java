@@ -8,7 +8,7 @@ import java.util.List;
 public class SequenceCreator implements Sequence{
     ArrayList<Double> sequence;
 
-    SequenceCreator(double[] array) {
+    public SequenceCreator(double[] array) {
         sequence = new ArrayList<>();
         for (double val:array)
             sequence.add(val);

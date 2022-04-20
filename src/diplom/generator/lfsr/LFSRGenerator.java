@@ -8,14 +8,14 @@ public class LFSRGenerator implements Generator {
     private int count;
     private final int length;
 
-    private LFSRGenerator(String polynomial) {
+    public LFSRGenerator(String polynomial) {
         this.polynomial = new StringBuilder(polynomial);
         sum = 0.0000;
         count = 0;
         length = polynomial.length();
     }
 
-    private LFSRGenerator(String polynomial, int offset) {
+    public LFSRGenerator(String polynomial, int offset) {
         this.polynomial = new StringBuilder(polynomial);
         for (int i = 0; i<offset; i++)
             nextBytePolynomial();

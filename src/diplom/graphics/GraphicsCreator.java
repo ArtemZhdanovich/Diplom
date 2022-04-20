@@ -8,11 +8,11 @@ import javax.swing.*;
 public class GraphicsCreator {
     private final DefaultCategoryDataset dataset;
 
-    GraphicsCreator(Sequence sequence) {
+    public GraphicsCreator(Sequence sequence) {
         dataset = createDataset(sequence);
     }
 
-    GraphicsCreator(Sequence sequence, double deviation) {
+    public GraphicsCreator(Sequence sequence, double deviation) {
         dataset = createDataset(sequence, deviation);
     }
 
