@@ -4,7 +4,7 @@ import diplom.generator.Generator;
 
 public class LFSRGenerator implements Generator {
     private String initialState;
-    private StringBuilder polynomial;
+    private final StringBuilder polynomial;
     private double sum;
     private int count;
     private final int length;
@@ -76,11 +76,6 @@ public class LFSRGenerator implements Generator {
             nextBytePolynomial();
             offset--;
         }
-    }
-
-    @Override
-    public int getLength() {
-        return length;
     }
 
     @Override
