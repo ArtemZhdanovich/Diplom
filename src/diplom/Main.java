@@ -27,10 +27,11 @@ public class Main {
             sequences[i] = new SequenceCreator(generator.getNextArray(generationLength));
         }
 
-        GraphicsCreator graphicsCreator1 = new GraphicsCreator(sequences[0], deviation);
-        graphicsCreator1.createChart(sequences[0], deviation);
         Sequence result = Analyzer.analyze(sequences, deviation);
-        GraphicsCreator graphicsCreator = new GraphicsCreator(result);
+        GraphicsCreator graphicsCreator = new GraphicsCreator(result, "Result");
         graphicsCreator.createChart(result);
+
+        GraphicsCreator graphicsCreator1 = new GraphicsCreator(sequences[result.getMinIndex()], deviation, new LFSRGenerator(polynomial).getState(result.getMinIndex()));
+        graphicsCreator1.createChart(sequences[result.getMinIndex()], deviation);
     }
 }

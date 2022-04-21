@@ -4,6 +4,7 @@ import diplom.sequence.Sequence;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.*;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
@@ -17,33 +18,33 @@ import java.awt.*;
 public class XYChart extends ApplicationFrame {
     private static final long serialVersionUID = 1L;
 
-    public XYChart(final String title, Sequence sequence)
+    public XYChart(final String title, Sequence sequence, String graphTitle)
     {
         super(title);
 
         XYDataset dataset    = createDataset(sequence);
-        JFreeChart chart      = createChart(dataset, true);
+        JFreeChart chart      = createChart(dataset, true, graphTitle);
         ChartPanel chartPanel = new ChartPanel(chart);
 
         chartPanel.setPreferredSize(new java.awt.Dimension(560, 480));
         setContentPane(chartPanel);
     }
 
-    public XYChart(final String title, Sequence sequence, double deviation)
+    public XYChart(final String title, Sequence sequence, double deviation, String graphTitle)
     {
         super(title);
 
         XYDataset dataset    = createDataset(sequence, deviation);
-        JFreeChart chart      = createChart(dataset, false);
+        JFreeChart chart      = createChart(dataset, false, graphTitle);
         ChartPanel chartPanel = new ChartPanel(chart);
 
         chartPanel.setPreferredSize(new java.awt.Dimension(560, 480));
         setContentPane(chartPanel);
     }
 
-    private JFreeChart createChart(XYDataset dataset, boolean points) {
+    private JFreeChart createChart(XYDataset dataset, boolean points, String title) {
         JFreeChart chart = ChartFactory.createXYLineChart(
-                "Линейный график 2",
+                title,
                 null,                        // x axis label
                 null,                        // y axis label
                 dataset,                     // data

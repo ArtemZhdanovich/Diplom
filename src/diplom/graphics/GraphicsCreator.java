@@ -11,13 +11,16 @@ import java.awt.*;
 
 public class GraphicsCreator {
     private final DefaultCategoryDataset dataset;
+    private final String title;
 
-    public GraphicsCreator(Sequence sequence) {
+    public GraphicsCreator(Sequence sequence, String title) {
         dataset = createDataset(sequence);
+        this.title = "График для полинома: "+title;
     }
 
-    public GraphicsCreator(Sequence sequence, double deviation) {
+    public GraphicsCreator(Sequence sequence, double deviation, String title) {
         dataset = createDataset(sequence, deviation);
+        this.title = "График для полинома: "+title;
     }
 
     public void createChart() {
@@ -34,7 +37,7 @@ public class GraphicsCreator {
 
     public void createChart(Sequence sequence) {
         SwingUtilities.invokeLater(() -> {
-            XYChart chart = new XYChart("Function", sequence);
+            XYChart chart = new XYChart("Function", sequence, title);
 
             chart.setAlwaysOnTop(true);
             chart.pack();
@@ -45,7 +48,7 @@ public class GraphicsCreator {
     }
     public void createChart(Sequence sequence, double deviation) {
         SwingUtilities.invokeLater(() -> {
-            XYChart chart = new XYChart("Function", sequence, deviation);
+            XYChart chart = new XYChart("Function", sequence, deviation, title);
 
             chart.setAlwaysOnTop(true);
             chart.pack();
