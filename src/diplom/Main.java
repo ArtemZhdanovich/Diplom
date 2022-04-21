@@ -6,9 +6,6 @@ import diplom.generator.lfsr.LFSRGenerator;
 import diplom.graphics.GraphicsCreator;
 import diplom.sequence.Sequence;
 import diplom.sequence.impl.SequenceCreator;
-import org.apache.commons.math3.*;
-import org.apache.commons.math3.special.Erf;
-
 import java.util.Scanner;
 
 public class Main {

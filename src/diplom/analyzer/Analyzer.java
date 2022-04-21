@@ -4,7 +4,12 @@ import diplom.generator.Generator;
 import diplom.sequence.Sequence;
 import diplom.sequence.impl.SequenceCreator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Analyzer {
+
+    private static Map<Double, Boolean> testCriteria = new HashMap<>();
 
     public static Sequence analyze(Sequence[] sequences, double deviation) {
         Sequence result = new SequenceCreator();
@@ -24,5 +29,9 @@ public class Analyzer {
 
     public static String findMin(Sequence sequence, Generator generator) {
         return generator.getState(sequence.getMinIndex());
+    }
+
+    public static void frequencyTest() {
+
     }
 }
