@@ -3,7 +3,7 @@ package diplom.generator.lfsr;
 import diplom.generator.Generator;
 
 public class LFSRGenerator implements Generator {
-    private String initialState;
+    private final String initialState;
     private final StringBuilder polynomial;
     private double sum;
     private int count;
@@ -17,28 +17,15 @@ public class LFSRGenerator implements Generator {
         length = polynomial.length();
     }
 
-    public LFSRGenerator(String polynomial, int offset) {
-        this.polynomial = new StringBuilder(polynomial);
-        for (int i = 0; i<offset; i++)
-            nextBytePolynomial();
-
-        sum = 0;
-        count = 0;
-        length = polynomial.length();
-    }
-
     private void nextBytePolynomial() {
-        int newByte = Character.getNumericValue(polynomial.charAt(length-1));
-        int[] arr = TabsTable.getArray(polynomial.length());
-        for (int a:arr) {
-            newByte ^= Character.getNumericValue(polynomial.charAt(a-1));
-        }
-
-        polynomial.deleteCharAt(length-1);
-        polynomial.insert(0,newByte);
+        nextByte(polynomial);
     }
 
     private void nextBytePolynomial(StringBuilder polynomial) {
+        nextByte(polynomial);
+    }
+
+    private void nextByte(StringBuilder polynomial) {
         int newByte = Character.getNumericValue(polynomial.charAt(length-1));
         int[] arr = TabsTable.getArray(polynomial.length());
         for (int a:arr) {
