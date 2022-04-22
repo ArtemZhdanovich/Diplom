@@ -24,11 +24,6 @@ public class SequenceCreator implements Sequence {
     }
 
     @Override
-    public ArrayList<Double> returnSequence() {
-        return sequence;
-    }
-
-    @Override
     public double getElement(int index) {
         return sequence.get(index);
     }

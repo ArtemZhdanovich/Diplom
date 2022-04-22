@@ -31,7 +31,7 @@ public class Analyzer {
         return generator.getState(sequence.getMinIndex());
     }
 
-    public static void frequencyTest() {
+    public static void frequencyTest(Sequence result) {
 
     }
 }

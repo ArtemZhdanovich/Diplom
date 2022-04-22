@@ -43,7 +43,7 @@ public class LFSRGenerator implements Generator {
     private double getNextDouble() {
         sum += getDouble();
         count++;
-        nextBytePolynomial();
+        nextByte(polynomial);
 
         return sum/count;
     }
@@ -58,9 +58,19 @@ public class LFSRGenerator implements Generator {
     }
 
     @Override
+    public double[] getBitArray(int count) {
+        double[] array = new double[count];
+        for (int i = 0; i<count; i++) {
+            array[i] = getDouble();
+            nextByte(polynomial);
+        }
+        return array;
+    }
+
+    @Override
     public void offset(int offset) {
         while (offset>0) {
-            nextBytePolynomial();
+            nextByte(polynomial);
             offset--;
         }
     }
