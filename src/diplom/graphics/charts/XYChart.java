@@ -35,7 +35,7 @@ public class XYChart extends ApplicationFrame {
     {
         super(title);
 
-        XYDataset dataset    = createDataset(sequence, deviation);
+        XYDataset dataset     = createDataset(sequence, deviation);
         JFreeChart chart      = createChart(dataset, false, graphTitle);
         ChartPanel chartPanel = new ChartPanel(chart);
 
@@ -43,7 +43,7 @@ public class XYChart extends ApplicationFrame {
         setContentPane(chartPanel);
     }
 
-    private JFreeChart createChart(XYDataset dataset, boolean points, String title) {
+    private JFreeChart createChart(XYDataset dataset, boolean result, String title) {
         JFreeChart chart = ChartFactory.createXYLineChart(
                 title,
                 null,                        // x axis label
@@ -55,28 +55,40 @@ public class XYChart extends ApplicationFrame {
                 false                        // urls
         );
 
+        if (result)
+            customizeResult(chart);
+        else
+            customizeGraph(chart);
+
+        return chart;
+    }
+    private void customizeResult(JFreeChart chart) {
         final XYPlot plot = chart.getXYPlot();
         plot.setBackgroundPaint(Color.orange);
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
         renderer.setSeriesShapesVisible(0, false);
-        renderer.setSeriesShapesVisible(1, false);
-        renderer.setSeriesShapesVisible(2, false);
-        renderer.setSeriesShapesVisible(3, false);
-
         renderer.setSeriesStroke       (0, new BasicStroke(2.5f));
         renderer.setSeriesStroke       (1, new BasicStroke(1.5f));
-        renderer.setSeriesStroke       (2, new BasicStroke(1.5f));
-        renderer.setSeriesStroke       (3, new BasicStroke(1.5f));
 
+        renderer.setSeriesPaint(1, Color.BLUE);
+        renderer.setSeriesShapesVisible(1, true);
+        plot.setRenderer(renderer);
+    }
+    private void customizeGraph(JFreeChart chart) {
+        final XYPlot plot = chart.getXYPlot();
+        plot.setBackgroundPaint(Color.orange);
+        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+
+        for (int i = 0; i<4; i++) {
+            renderer.setSeriesShapesVisible(i, false);
+            renderer.setSeriesStroke(i, new BasicStroke(1.5f));
+        }
+        renderer.setSeriesStroke(0, new BasicStroke(2.5f));
         renderer.setSeriesPaint(1, Color.BLUE);
         renderer.setSeriesPaint(2, Color.BLUE);
         renderer.setSeriesPaint(3, Color.GREEN);
-        if (points) {
-            renderer.setSeriesShapesVisible(1, true);
-        }
-        plot.setRenderer(renderer);
 
-        return chart;
+        plot.setRenderer(renderer);
     }
 
     private XYDataset createDataset(Sequence sequence) {
