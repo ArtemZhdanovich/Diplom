@@ -25,10 +25,10 @@ public class Main {
         }
 
         Sequence result = Analyzer.analyze(sequences, deviation);
-        GraphicsCreator graphicsCreator = new GraphicsCreator(result, "Result");
+        GraphicsCreator graphicsCreator = new GraphicsCreator("Linear chart for result");
         graphicsCreator.createChart(result);
 
-        GraphicsCreator graphicsCreator1 = new GraphicsCreator(sequences[result.getMinIndex()], deviation, new LFSRGenerator(polynomial).getState(result.getMinIndex()));
+        GraphicsCreator graphicsCreator1 = new GraphicsCreator("Linear chart for " + new LFSRGenerator(polynomial).getState(result.getMinIndex()));
         graphicsCreator1.createChart(sequences[result.getMinIndex()], deviation);
     }
 }

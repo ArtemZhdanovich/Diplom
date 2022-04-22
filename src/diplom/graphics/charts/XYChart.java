@@ -4,7 +4,6 @@ import diplom.sequence.Sequence;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.labels.*;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
@@ -14,8 +13,10 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import java.awt.*;
+import java.io.Serial;
 
 public class XYChart extends ApplicationFrame {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public XYChart(final String title, Sequence sequence, String graphTitle)
@@ -55,6 +56,7 @@ public class XYChart extends ApplicationFrame {
         );
 
         final XYPlot plot = chart.getXYPlot();
+        plot.setBackgroundPaint(Color.orange);
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
         renderer.setSeriesShapesVisible(0, false);
         renderer.setSeriesShapesVisible(1, false);
