@@ -127,5 +127,4 @@ public class XYChart extends ApplicationFrame {
 
         return dataset;
     }
-
 }
