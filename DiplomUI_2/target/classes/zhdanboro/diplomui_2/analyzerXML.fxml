@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane fx:controller="zhdanboro.diplomui_2.DiplomUIController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="514.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+  <tabs>
+    <Tab text="Анализ готовой последовательности">
+         <content>
+            <AnchorPane prefHeight="422.0" prefWidth="514.0">
+               <children>
+                  <Label layoutX="40.0" layoutY="32.0" prefHeight="18.0" prefWidth="231.0" text="Выберите файл с последовательностью" />
+                  <TextField fx:id="sequenceFileTextField" layoutX="40.0" layoutY="56.0" prefHeight="26.0" prefWidth="217.0" />
+                  <Button fx:id="sequenceFileChooseButton" onAction="#chooseSequenceFile" layoutX="259.0" layoutY="57.0" mnemonicParsing="false" text="Выбрать" />
+
+                  <Label layoutX="40.0" layoutY="106.0" prefHeight="18.0" prefWidth="196.0" text="Тип последовательности" />
+                  <RadioButton fx:id="typeBinary" layoutX="40.0" layoutY="131.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="Бинарная" />
+                  <RadioButton fx:id="typeNormal" layoutX="40.0" layoutY="149.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="[0,1]" />
+                  <RadioButton fx:id="typeOther" layoutX="40.0" layoutY="167.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="Другой" />
+
+                  <Label layoutX="40.0" layoutY="204.0" prefHeight="18.0" prefWidth="142.0" text="Анализ по базе:" />
+                  <RadioButton fx:id="useBaseInner" layoutX="40.0" layoutY="231.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="Встроенная" />
+                  <RadioButton fx:id="useBaseOther" layoutX="40.0" layoutY="249.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="Другая" />
+
+                  <Label layoutX="41.0" layoutY="276.0" prefHeight="18.0" prefWidth="231.0" text="Выберите файл с базой эталонов" />
+                  <TextField fx:id="baseFileTextField" layoutX="41.0" layoutY="300.0" prefHeight="26.0" prefWidth="217.0" />
+                  <Button fx:id="baseFileChooseButton" onAction="#chooseBaseFile" layoutX="260.0" layoutY="301.0" mnemonicParsing="false" text="Выбрать" />
+
+                  <Button layoutX="239.0" layoutY="353.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Начать" />
+               </children>
+            </AnchorPane>
+         </content></Tab>
+    <Tab text="Генерация и оценка эталонов">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="53.0" layoutY="49.0" prefHeight="18.0" prefWidth="218.0" text="Введите начальный полином" />
+                  <TextField fx:id="polynomialInputTextField" layoutX="52.0" layoutY="71.0" prefHeight="26.0" prefWidth="193.0" />
+
+                  <Label layoutX="53.0" layoutY="109.0" prefHeight="18.0" prefWidth="218.0" text="Длина одной последовательности" />
+                  <TextField fx:id="generationLengthTextField" layoutX="53.0" layoutY="131.0" prefHeight="26.0" prefWidth="191.0" />
+
+                  <Label layoutX="53.0" layoutY="169.0" prefHeight="18.0" prefWidth="218.0" text="Количество генераций" />
+                  <TextField fx:id="generationCountTextField" layoutX="53.0" layoutY="189.0" prefHeight="26.0" prefWidth="192.0" />
+
+                  <Label layoutX="284.0" layoutY="49.0" prefHeight="18.0" prefWidth="218.0" text="Выберите генератор" />
+                  <ComboBox fx:id="chooseGeneratorComboBox" layoutX="284.0" layoutY="71.0" prefHeight="26.0" prefWidth="192.0" />
+
+                  <Label layoutX="285.0" layoutY="169.0" prefHeight="18.0" prefWidth="218.0" text="Начать с" />
+                  <TextField fx:id="startStageTextField" layoutX="283.0" layoutY="189.0" prefHeight="26.0" prefWidth="192.0" />
+
+                  <CheckBox fx:id="saveToBaseCheckBox" layoutX="53.0" layoutY="238.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="192.0" text="Сохранить результат в базу" />
+
+                  <Button fx:id="buttonStartGenerate" onAction="#startGenerate" layoutX="229.0" layoutY="309.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="85.0" text="Начать" />
+               </children>
+            </AnchorPane>
+         </content></Tab>
+  </tabs>
+</TabPane>

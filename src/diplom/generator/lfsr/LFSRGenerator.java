@@ -36,7 +36,7 @@ public class LFSRGenerator implements Generator {
         polynomial.insert(0,newByte);
     }
 
-    private double getDouble() {
+    private int getDouble() {
         return Character.getNumericValue(polynomial.charAt(0));
     }
 
